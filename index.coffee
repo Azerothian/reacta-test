@@ -1,3 +1,8 @@
+log = require("debug")("react-test:")
+memwatch = require "memwatch"
+memwatch.on "leak", (info) ->
+  log "onleak", info
+
 reacta = require("reacta")({
   env: "development"
   threads: 1
@@ -10,9 +15,9 @@ reacta = require("reacta")({
     'main': './layouts/main'
   browserify:
     extensions: [".js", ".coffee", ".json", ".cjsx", ".cson"]
-    globalshim:
-      react: 'React || React'
-      "react-router": "window.ReactRouter"
+    globalshim: {}
+    #  react: 'React || React'
+    #  "react-router": "window.ReactRouter"
 
   modules: []
   api:
@@ -23,6 +28,7 @@ reacta = require("reacta")({
 
   apps:
     'index':
+      disableServerRenderer: false
       path: '/'
       layout: 'main'
       modules: []

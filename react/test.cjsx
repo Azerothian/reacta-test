@@ -1,6 +1,14 @@
 React = require "react"
+Template = require "./template"
+{Row, Col} = require "react-bootstrap"
 
 module.exports = React.createClass {
   render: () ->
-    <div>{"test"}</div>
+    <Template>
+      <Row>
+        <Col xs={12}>
+          {"Test Page"}
+        </Col>
+      </Row>
+    </Template>
 }
