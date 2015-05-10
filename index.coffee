@@ -8,7 +8,7 @@ reacta = require("reacta")({
   threads: 1
   minify: false
   express:
-    port: 6655
+    port: process.env.PORT || 6655
   name: 'site'
   'static': './public'
   layouts:
@@ -18,17 +18,11 @@ reacta = require("reacta")({
     globalshim: {}
     #  react: 'React || React'
     #  "react-router": "window.ReactRouter"
-
-  modules: []
-  api:
-    get:
-      '/api/testhit': ['/testhit']
-    post:
-      '/api/testhit': ['/testhit']
+  api: "./services"
 
   apps:
     'index':
-      disableServerRenderer: false
+      disableServerRenderer: true
       path: '/'
       layout: 'main'
       modules: []
